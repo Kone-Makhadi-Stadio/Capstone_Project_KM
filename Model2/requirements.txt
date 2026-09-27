@@ -1,0 +1,5 @@
+pandas: version 3.0.3
+numpy: version 2.4.6
+scikit-learn: version 1.9.0
+matplotlib: version 3.11.0
+jupyter
