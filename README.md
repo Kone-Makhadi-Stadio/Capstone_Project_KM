@@ -435,3 +435,148 @@ Hou, S., Cai, Z., Wu, J., Du, H. and Xie, P. (2022) 'Applying machine learning t
 Moro, S., Cortez, P. and Rita, P. (2014) 'A data-driven approach to predict the success of bank telemarketing', *Decision Support Systems*, 62, pp. 22-31. doi:10.1016/j.dss.2014.03.001.
 
 Moro, S., Rita, P. and Cortez, P. (2014) *Bank Marketing* [Dataset]. UCI Machine Learning Repository. doi:10.24432/C5K306.
+
+## SS3 Part B: STADIOEquities Account Activation
+
+### Project objective
+
+Apply the Random Forest method selected in SS2 to the supplied
+synthetic STADIOEquities data.
+
+The model predicts whether customers who have not activated by
+day 3 after registration will activate by day 30.
+
+Activation means a successful first deposit of at least R100 within
+30 calendar days of registration:
+
+- **Class 0:** Not activated within 30 days.
+- **Class 1:** Activated within 30 days.
+
+### Notebook
+
+[Open SS3_PartB.ipynb](SS3_PartB.ipynb)
+
+The notebook contains five clearly labelled assessment components:
+
+1. Dataset loading.
+2. Dataset preprocessing.
+3. Model training.
+4. Model validation.
+5. Results visualisation.
+
+### Data
+
+The supplied extract contains five CSV files:
+
+| File | Contents |
+|---|---|
+| source1_registration_kyc_customer.csv | Registration, customer attributes and KYC |
+| source2_app_web_behaviour.csv | App and web activity |
+| source3_account_funds_activation.csv | Funding and activation outcomes |
+| source4_marketing_engagement.csv | Marketing activity |
+| source5_data_quality_metadata.csv | Extract and data-quality metadata |
+
+The funding dataset contains 1,893 customers: 1,085 non-activated
+customers (57.32%) and 808 activated customers (42.68%).
+
+These are raw dataset counts. The modelling cohort is smaller after
+quality checks and exclusion of customers already activated by day 3.
+
+### Requirements
+
+Python 3.11 or later is recommended.
+
+Install the required packages using:
+
+```bash
+pip install "pandas>=2.0" numpy matplotlib "scikit-learn>=1.2" notebook
+```
+
+### How to run
+
+1. Download or clone this repository.
+2. Obtain and extract the supplied STADIOEquities CSV files.
+3. Open `SS3_PartB.ipynb` in Jupyter Notebook.
+4. In the folder-path cell, update `data_folder` to the folder
+   containing all five CSV files.
+5. Run the notebook cells from top to bottom.
+6. Save the notebook with its outputs.
+
+### Preprocessing
+
+Exact duplicates are removed, text categories are standardised and
+dates are parsed. Records with insufficient registration timestamps,
+incomplete follow-up or conflicting target information are excluded.
+
+Behavioural events and marketing messages are aggregated within the
+first three days after registration.
+
+Funding outcomes, balances and other information unavailable at the
+prediction time are excluded from model inputs.
+
+Missing numeric values are imputed using training-data medians.
+Categorical variables are imputed and one-hot encoded within the
+modelling pipeline.
+
+Customers are split chronologically into training, validation and test
+subsets. Outcome-overlap embargoes ensure earlier customers' outcomes
+are available before predictions begin in the next subset.
+
+### Model training
+
+The model is a Random Forest with 300 trees and balanced class weights.
+
+Eight combinations of maximum tree depth, minimum leaf size and
+maximum features are compared using validation macro F1.
+
+The classification threshold is selected using validation data.
+The selected configuration is then fitted on training plus validation
+data before final test evaluation.
+
+The test set is not used for model or threshold selection.
+
+### Evaluation
+
+The notebook reports:
+
+- Accuracy and balanced accuracy.
+- Macro and weighted F1.
+- Class-specific precision, recall and F1.
+- ROC-AUC and activation average precision.
+- Brier score.
+- A conditional bootstrap interval for test macro F1.
+
+Performance is compared with majority-class and constant-probability
+baselines.
+
+### Visualisations and saved outputs
+
+Running the notebook creates a `results/` folder containing:
+
+- Dataset inventory and input file hashes.
+- Quality checks and cohort counts.
+- Training, validation and test subset summaries.
+- Hyperparameter and threshold comparisons.
+- Selected model settings and evaluation metrics.
+- Training and validation performance plots.
+- Test confusion matrix.
+- ROC and precision-recall curves.
+- Calibration and class-specific performance plots.
+- Class proportions and feature importance.
+
+### Limitations
+
+The supplied data are synthetic, so performance does not establish
+effectiveness on live client data.
+
+Results apply to customers who have not activated by day 3.
+This notebook does not model six-month dormancy.
+
+Feature importance describes model behaviour rather than causal
+relationships. A separate intervention study is needed to determine
+whether targeted follow-up improves activation.
+
+### Commit history
+
+Part B requires at least five meaningful commits, covering dataset
+loading, preprocessing, training, validation and visualisation.
