@@ -1,0 +1,24 @@
+check,records
+registration: exact duplicates removed,5
+behaviour: exact duplicates removed,0
+funding: exact duplicates removed,0
+marketing: exact duplicates removed,0
+metadata: exact duplicates removed,4
+Invalid ages replaced with missing,0
+registration_channel: invalid categories replaced with missing,0
+acquisition_channel: invalid categories replaced with missing,0
+region: invalid categories replaced with missing,0
+investment_goal: invalid categories replaced with missing,0
+risk_appetite: invalid categories replaced with missing,0
+Insufficient registration timestamps,12
+Incomplete outcome windows,0
+Conflicting target records excluded,20
+Already activated by day 3,248
+behaviour: insufficient event timestamps,111
+behaviour: unknown customer identifiers,0
+behaviour: events retained by day 3,4452
+marketing: insufficient event timestamps,0
+marketing: unknown customer identifiers,0
+marketing: events retained by day 3,370
+Training outcome-overlap embargo,66
+Validation outcome-overlap embargo,51

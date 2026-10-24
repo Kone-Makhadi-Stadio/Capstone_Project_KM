@@ -1,0 +1,6 @@
+dataset,rows,columns,exact_duplicates,unique_customers
+registration,1898,13,5,1893.0
+behaviour,18322,11,0,1893.0
+funding,1893,11,0,1893.0
+marketing,8332,10,0,1893.0
+metadata,11475,5,4,
