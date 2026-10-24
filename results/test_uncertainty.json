@@ -1,0 +1,10 @@
+{
+  "bootstrap_replicates": 1000,
+  "macro_f1_ci95": [
+    0.8246052695993324,
+    0.9008958995861773
+  ],
+  "majority_baseline_accuracy": 0.6501547987616099,
+  "majority_baseline_macro_f1": 0.39399624765478425,
+  "probability_baseline_brier": 0.22781717890813752
+}
