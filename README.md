@@ -1,3 +1,5 @@
+
+
 # Capstone_Project_STADIOEquities
 
 STADIOEquities (Retail Investing & Fintech)
@@ -576,7 +578,6 @@ Feature importance describes model behaviour rather than causal
 relationships. A separate intervention study is needed to determine
 whether targeted follow-up improves activation.
 
-### Commit history
-
-Part B requires at least five meaningful commits, covering dataset
-loading, preprocessing, training, validation and visualisation.
+## Link to SS3 Part C
+Sharepoint: https://stadiomultiversity-my.sharepoint.com/:f:/g/personal/21401139_stadio_ac_za/IgALRuBngaFuQojggQ-GYtnXAcChhJfrIRYXbEvk_dyOmKI?e=3SxRIW
+Youtube: https://youtu.be/zF6_-KXXL_8
